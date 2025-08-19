@@ -1,1 +1,11 @@
 # requirements.txt
+
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+statsmodels
+ruptures   # change point detection
+prophet    # time series forecasting
+jupyter
