@@ -17,7 +17,7 @@ tests/ # Unit tests
 
 ### 🚀 How to Run
 ```bash
-git clone <your_repo_link>
+git clone [Finance-Risk-Analysis](https://github.com/ProfessorAbraham/finance-risk-analysis)
 cd project
 pip install -r requirements.txt
 jupyter notebook notebooks/01_data_exploration.ipynb
