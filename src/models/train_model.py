@@ -10,5 +10,7 @@ def train_change_point_model(log_returns):
         sigma = pm.Exponential('sigma', 1.0)
         mu = pm.math.switch(tau >= np.arange(T), mu1, mu2)
         y = pm.Normal('y', mu=mu, sigma=sigma, observed=log_returns)
-        trace = pm.sample(2000, tune=1000, target_accept=0.95, cores=2)
-    return trace
+        trace = pm.sample(2000, tune=1000, target_accept=0.95, cores=2, progressbar=True
+)
+
+return trace
