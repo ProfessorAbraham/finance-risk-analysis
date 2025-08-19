@@ -1,3 +1,6 @@
+# build_features.py
+
 def rolling_volatility(df, window=30):
-    """Calculate rolling volatility of log returns"""
-    return df['log_return'].rolling(window).std()
+    """Compute rolling volatility of log returns"""
+    df['volatility_30d'] = df['log_return'].rolling(window).std()
+    return df

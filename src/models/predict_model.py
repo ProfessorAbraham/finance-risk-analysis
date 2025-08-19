@@ -1,12 +1,17 @@
+# predict_model.py
+
 import numpy as np
 
 def get_change_point_date(trace, df):
-    tau_posterior = trace.posterior['tau'].values.flatten()
-    tau_index = int(np.median(tau_posterior))
-    return df.index[tau_index]
+    """Extract most probable change point index and convert to date"""
+    tau_post = trace['tau']
+    tau_index = int(np.median(tau_post))
+    change_date = df.index[tau_index]
+    return change_date
 
 def quantify_shift(df, change_date):
-    before_mean = df['log_return'][df.index < change_date].mean()
-    after_mean = df['log_return'][df.index >= change_date].mean()
-    shift = after_mean - before_mean
-    return before_mean, after_mean, shift
+    """Compute mean log return before and after change point"""
+    before = df.loc[:change_date, 'log_return'].mean()
+    after = df.loc[change_date:, 'log_return'].mean()
+    shift = after - before
+    return before, after, shift
